@@ -292,26 +292,56 @@
           <div class="project-index">08</div>
           <div class="project-body">
             <div class="project-top">
-              <h3>ERP Data Pipelines</h3>
+              <h3>SAP Month End Close Pipeline</h3>
               <ul class="tags">
                 <li>Python</li>
-                <li>SQL</li>
-                <li>SAP</li>
+                <li>MySQL</li>
+                <li>Flask</li>
                 <li>ETL</li>
               </ul>
             </div>
             <p>
-              Automated extracts from ERP via BAPI and RFC into Excel and SQL backed
-              viewers. Replaces manual finance pulls with repeatable month end pipelines.
+              Month end accounting hub that loads SAP GL, KE30, absorption, and expense
+              extracts into MySQL, classifies lines with SQL views, and powers an Operations
+              P&amp;L workbook through Power Query. Includes a Flask table browser with
+              filters and Excel export for finance review.
             </p>
           </div>
           <div class="project-visual v-sap" aria-hidden="true">
             <div class="sap-flow">
-              <span>ERP</span>
+              <span>SAP</span>
               <em></em>
-              <span>Python</span>
+              <span>MySQL</span>
               <em></em>
-              <span>SQL</span>
+              <span>P&amp;L</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">09</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Cost Center Actuals &amp; Plan</h3>
+              <ul class="tags">
+                <li>PyRFC</li>
+                <li>BAPI</li>
+                <li>Flask</li>
+                <li>Power BI</li>
+              </ul>
+            </div>
+            <p>
+              Live SAP BAPI pulls for cost center actuals and plan costs into MySQL,
+              with plan vs actual viewers, expenses vs absorption splits, Excel dumps,
+              and Power BI ready quarterly aggregates for close and budget analysis.
+            </p>
+          </div>
+          <div class="project-visual v-tracker" aria-hidden="true">
+            <div class="viz-panel">
+              <span class="viz-label">Plan vs Actual</span>
+              <div class="bars">
+                <i style="--h:78%"></i><i style="--h:55%"></i><i style="--h:92%"></i><i style="--h:64%"></i><i style="--h:81%"></i>
+              </div>
             </div>
           </div>
         </li>
@@ -346,9 +376,9 @@
           <h3>Systems</h3>
           <ul>
             <li>Relational data modeling</li>
-            <li>ERP / API integrations</li>
+            <li>SAP BAPI / RFC integrations</li>
+            <li>Month end ETL pipelines</li>
             <li>nginx + Waitress deploy</li>
-            <li>Windows desktop delivery</li>
           </ul>
         </div>
         <div>
@@ -370,8 +400,8 @@
           <h2>Engineer who started in data. Still fluent in both.</h2>
           <p>
             My day job is Data Analyst at Fives Landis, but most of what I ship is
-            software: Flask apps, databases, APIs, dashboards, and automation that
-            replaces fragile spreadsheet processes.
+            software: Flask apps, databases, SAP integrations, dashboards, and
+            automation that replaces fragile spreadsheet processes.
           </p>
           <p>
             I am looking for Software Engineering or Data Analytics roles where I can
@@ -396,7 +426,7 @@
             </div>
             <div>
               <dt>Core stack</dt>
-              <dd>Python · SQL · Flask · Power BI · JavaScript</dd>
+              <dd>Python · SQL · Flask · SAP · Power BI</dd>
             </div>
           </dl>
         </aside>
