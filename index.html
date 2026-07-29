@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Mark Miranda. Software engineer and data analyst. Python, Flask, SQL, Power BI. Building production web apps and analytics systems." />
+  <title>Mark Miranda | Software Engineering &amp; Data Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Mark Miranda home">
+      <span class="logo-mark">MM</span>
+      <span class="logo-name">Mark Miranda</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-visual" aria-hidden="true">
+        <div class="dial">
+          <div class="dial-ring dial-ring-a"></div>
+          <div class="dial-ring dial-ring-b"></div>
+          <div class="dial-ring dial-ring-c"></div>
+          <div class="dial-cross"></div>
+          <div class="dial-core"></div>
+          <div class="dial-tick"></div>
+        </div>
+        <div class="hero-grid"></div>
+        <div class="hero-wash"></div>
+      </div>
+
+      <div class="hero-copy">
+        <p class="hero-brand">Mark Miranda</p>
+        <h1 class="hero-title">
+          Software engineering<br />
+          and <span class="accent">data analytics</span><br />
+          that ship.
+        </h1>
+        <p class="hero-lead">
+          I design and build production web apps, data pipelines, and dashboards.
+          Python and SQL on the backend, clear interfaces on the front, measurable
+          outcomes for the business.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">View projects</a>
+          <a class="btn btn-ghost" href="#contact">Open to roles</a>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <span>Hagerstown, MD / Remote</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Software Engineering</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Data Analytics</span>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Production systems across engineering and analytics.</h2>
+      </div>
+
+      <ol class="project-list">
+        <li class="project" data-reveal>
+          <div class="project-index">01</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Sales Agent Tracker</h3>
+              <ul class="tags">
+                <li>Flask</li>
+                <li>MySQL</li>
+                <li>Auth</li>
+                <li>Production</li>
+              </ul>
+            </div>
+            <p>
+              Full stack web app for a sales network. Role based access, opportunity
+              tracking, quotation workflows, and SAP part lookups. Live in production
+              with MySQL persistence and multi user admin views.
+            </p>
+            <a class="project-link" href="https://www.fiveslandiscorp.com" target="_blank" rel="noopener noreferrer">
+              Live site
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="project-visual v-tracker" aria-hidden="true">
+            <div class="viz-panel">
+              <span class="viz-label">Pipeline</span>
+              <div class="bars">
+                <i style="--h:62%"></i><i style="--h:84%"></i><i style="--h:48%"></i><i style="--h:71%"></i><i style="--h:93%"></i>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">02</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Lobby Check-In</h3>
+              <ul class="tags">
+                <li>Python</li>
+                <li>APIs</li>
+                <li>MySQL</li>
+                <li>Desktop</li>
+              </ul>
+            </div>
+            <p>
+              End to end visitor system with screening against Trade.gov, document
+              uploads, badge printing, and an admin dashboard. Packaged for Windows
+              deployment with config wizard and audit friendly flows.
+            </p>
+            <a class="project-link" href="https://github.com/markdantemiranda/LobbyCheckInV1" target="_blank" rel="noopener noreferrer">
+              GitHub
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="project-visual v-lobby" aria-hidden="true">
+            <div class="badge-mock">
+              <span class="badge-chip">VISITOR</span>
+              <span class="badge-name">Check-In</span>
+              <span class="badge-id">API · SCREENED</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">03</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Exit Interview Insights</h3>
+              <ul class="tags">
+                <li>Chart.js</li>
+                <li>ETL</li>
+                <li>Flask</li>
+                <li>Analytics</li>
+              </ul>
+            </div>
+            <p>
+              Analytics product that ingests survey exports, cleans and stores responses,
+              and surfaces retention themes with interactive charts. Built for
+              stakeholders who need answers without opening a spreadsheet.
+            </p>
+          </div>
+          <div class="project-visual v-exit" aria-hidden="true">
+            <div class="spark">
+              <svg viewBox="0 0 160 64" preserveAspectRatio="none">
+                <polyline points="0,48 20,40 40,44 60,28 80,32 100,18 120,24 140,10 160,14" fill="none" stroke="currentColor" stroke-width="2.5"/>
+              </svg>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">04</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Sales Tool Showcase</h3>
+              <ul class="tags">
+                <li>Three.js</li>
+                <li>Flask</li>
+                <li>REST</li>
+                <li>UI</li>
+              </ul>
+            </div>
+            <p>
+              Product catalog with a Three.js 3D viewer, JSON APIs, and admin vs.
+              read only modes. Spec comparison matrices and content settings so
+              non engineers can update the experience.
+            </p>
+          </div>
+          <div class="project-visual v-sales" aria-hidden="true">
+            <div class="orbit">
+              <div class="orbit-ring"></div>
+              <div class="orbit-machine"></div>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">05</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Internal Ops Portal</h3>
+              <ul class="tags">
+                <li>Flask</li>
+                <li>Power BI</li>
+                <li>SQL</li>
+                <li>Embeds</li>
+              </ul>
+            </div>
+            <p>
+              Multi site employee portal with news, calendar, knowledge wiki, and
+              embedded Power BI reports. One place for ops teams to find process
+              docs and live metrics.
+            </p>
+          </div>
+          <div class="project-visual v-portal" aria-hidden="true">
+            <div class="portal-tiles">
+              <span>WEB</span><span>BI</span><span>DOCS</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">06</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Metrology Database</h3>
+              <ul class="tags">
+                <li>Flask</li>
+                <li>SQLite</li>
+                <li>CRUD</li>
+                <li>Deploy</li>
+              </ul>
+            </div>
+            <p>
+              Searchable records app with Excel ingest, full CRUD, and print ready
+              views. Deployed behind nginx with Waitress for day to day quality use.
+            </p>
+          </div>
+          <div class="project-visual v-metro" aria-hidden="true">
+            <div class="metro-gauge">
+              <svg viewBox="0 0 120 70" fill="none">
+                <path d="M10 60 A50 50 0 0 1 110 60" stroke="currentColor" stroke-width="6" opacity=".2"/>
+                <path class="metro-arc" d="M10 60 A50 50 0 0 1 95 22" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="60" cy="60" r="4" fill="currentColor"/>
+              </svg>
+              <span>±0.002</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">07</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Matrix Parts Checker</h3>
+              <ul class="tags">
+                <li>Python</li>
+                <li>Packaging</li>
+                <li>Excel</li>
+                <li>Offline</li>
+              </ul>
+            </div>
+            <p>
+              Desktop utility that validates part compatibility from Excel rules.
+              Packaged with PyInstaller so floor users run it without a Python install.
+            </p>
+          </div>
+          <div class="project-visual v-matrix" aria-hidden="true">
+            <div class="matrix-grid">
+              <i></i><i class="on"></i><i></i><i class="on"></i>
+              <i class="on"></i><i></i><i class="on"></i><i></i>
+              <i></i><i class="on"></i><i></i><i class="on"></i>
+            </div>
+          </div>
+        </li>
+
+        <li class="project" data-reveal>
+          <div class="project-index">08</div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>ERP Data Pipelines</h3>
+              <ul class="tags">
+                <li>Python</li>
+                <li>SQL</li>
+                <li>SAP</li>
+                <li>ETL</li>
+              </ul>
+            </div>
+            <p>
+              Automated extracts from ERP via BAPI and RFC into Excel and SQL backed
+              viewers. Replaces manual finance pulls with repeatable month end pipelines.
+            </p>
+          </div>
+          <div class="project-visual v-sap" aria-hidden="true">
+            <div class="sap-flow">
+              <span>ERP</span>
+              <em></em>
+              <span>Python</span>
+              <em></em>
+              <span>SQL</span>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="stack" id="skills">
+      <div class="section-head">
+        <p class="eyebrow">Skills</p>
+        <h2>What I bring to the role.</h2>
+      </div>
+      <div class="stack-grid" data-reveal>
+        <div>
+          <h3>Software engineering</h3>
+          <ul>
+            <li>Python / Flask</li>
+            <li>REST APIs &amp; auth</li>
+            <li>JavaScript / HTML / CSS</li>
+            <li>Git &amp; packaging</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Data &amp; analytics</h3>
+          <ul>
+            <li>SQL (MySQL, SQLite, SQL Server)</li>
+            <li>Power BI</li>
+            <li>ETL &amp; Excel automation</li>
+            <li>Chart.js dashboards</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Systems</h3>
+          <ul>
+            <li>Relational data modeling</li>
+            <li>ERP / API integrations</li>
+            <li>nginx + Waitress deploy</li>
+            <li>Windows desktop delivery</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Strengths</h3>
+          <ul>
+            <li>Own problems end to end</li>
+            <li>Ship usable products fast</li>
+            <li>Translate business to code</li>
+            <li>Document and hand off cleanly</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-grid">
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">About</p>
+          <h2>Engineer who started in data. Still fluent in both.</h2>
+          <p>
+            My day job is Data Analyst at Fives Landis, but most of what I ship is
+            software: Flask apps, databases, APIs, dashboards, and automation that
+            replaces fragile spreadsheet processes.
+          </p>
+          <p>
+            I am looking for Software Engineering or Data Analytics roles where I can
+            build reliable systems, work with real users, and keep growing as an
+            engineer. Comfortable collaborating with finance, ops, and sales, and
+            happiest when a prototype becomes something people depend on.
+          </p>
+        </div>
+        <aside class="about-aside" data-reveal>
+          <dl>
+            <div>
+              <dt>Open to</dt>
+              <dd>Software Engineer · Data Analyst · Analytics Engineer</dd>
+            </div>
+            <div>
+              <dt>Currently</dt>
+              <dd>Data Analyst, Fives Landis Corp</dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>Hagerstown / Falling Waters, WV area · Remote friendly</dd>
+            </div>
+            <div>
+              <dt>Core stack</dt>
+              <dd>Python · SQL · Flask · Power BI · JavaScript</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-panel" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s talk about the role.</h2>
+        <p>
+          Hiring for software engineering or data analytics? I would love to hear
+          about the problem you need solved.
+        </p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:Mark.Miranda@fivesgroup.com">Email me</a>
+          <a class="btn btn-ghost" href="https://github.com/markdantemiranda" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Mark Miranda</span>
+    <span class="footer-note">Software Engineering · Data Analytics</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
