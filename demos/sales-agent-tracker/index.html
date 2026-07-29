@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Sales Agent Tracker · Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --primary-dark: #084298;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #06b6d4;
+      --purple: #8b5cf6;
+      --text: #1f2937;
+      --text-mid: #4b5563;
+      --text-light: #6b7280;
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --header: #0176d3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .demo-banner {
+      position: sticky; top: 0; z-index: 40;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+      padding: 0.65rem 1.25rem;
+      background: #fff7ed;
+      border-bottom: 1px solid #fdba74;
+      color: #9a3412;
+      font-size: 13px;
+    }
+    .demo-banner strong { color: #7c2d12; }
+    .topnav {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-weight: 700; color: var(--text); text-decoration: none;
+    }
+    .brand-mark {
+      width: 28px; height: 28px; border-radius: 6px;
+      display: grid; place-items: center;
+      background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+      color: #fff; font-size: 12px;
+    }
+    .nav-tabs { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .nav-tabs button {
+      border: 0; background: transparent; cursor: pointer;
+      padding: 0.45rem 0.8rem; border-radius: 6px;
+      color: var(--text-mid); font: inherit; font-weight: 600;
+    }
+    .nav-tabs button.active, .nav-tabs button:hover {
+      background: #eff6ff; color: var(--primary);
+    }
+    .user-chip {
+      font-size: 12px; color: var(--text-light);
+      display: flex; align-items: center; gap: 0.45rem;
+    }
+    .badge {
+      display: inline-block; padding: 0.15rem 0.45rem; border-radius: 999px;
+      background: #dbeafe; color: #1d4ed8; font-size: 11px; font-weight: 700;
+    }
+    .page-header {
+      background: linear-gradient(135deg, var(--header), var(--primary-dark));
+      color: #fff; padding: 1.35rem 1.25rem 1.5rem;
+    }
+    .page-header h1 { margin: 0 0 0.35rem; font-size: 1.45rem; }
+    .page-header p { margin: 0; opacity: 0.9; font-size: 0.92rem; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 1.25rem; }
+    .filters {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem; margin-bottom: 1rem;
+    }
+    .filters label {
+      display: grid; gap: 0.3rem; font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.04em; color: var(--text-light); font-weight: 700;
+    }
+    .filters select, .filters input {
+      border: 1px solid var(--border); border-radius: 6px; padding: 0.45rem 0.55rem;
+      font: inherit; color: var(--text); background: #fff;
+    }
+    .kpis {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .kpi {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem 1.05rem;
+    }
+    .kpi .label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+    .kpi .value { font-size: 1.7rem; font-weight: 750; margin-top: 0.25rem; color: var(--text); }
+    .kpi.opp .value { color: #04844b; }
+    .kpi.sap .value { color: #c2410c; }
+    .kpi.comments .value { color: #6366f1; }
+    .charts {
+      display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden;
+    }
+    .card-h {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
+      font-weight: 700; font-size: 0.92rem;
+    }
+    .card-b { padding: 1rem; }
+    .chart-box { height: 220px; position: relative; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 0.7rem 0.85rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: #f3f2f2; color: #706e6b; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+    tr:hover td { background: #f8fafc; }
+    .stage {
+      display: inline-block; padding: 0.15rem 0.45rem; border-radius: 4px;
+      font-size: 11px; font-weight: 700; background: #e0f2fe; color: #0369a1;
+    }
+    .stage.negotiation { background: #ffedd5; color: #c2410c; }
+    .stage.won { background: #dcfce7; color: #15803d; }
+    .stage.lost { background: #fee2e2; color: #b91c1c; }
+    .money { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .detail-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .field .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: #706e6b; font-weight: 700; }
+    .field .v { margin-top: 0.2rem; color: #16325c; font-weight: 600; }
+    .comments { display: grid; gap: 0.75rem; }
+    .comment {
+      border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem;
+      background: #fafafa;
+    }
+    .comment .meta { font-size: 12px; color: var(--text-light); margin-bottom: 0.35rem; }
+    .split { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 0.85rem; }
+    @media (max-width: 960px) {
+      .filters, .kpis, .charts, .detail-grid, .split { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .filters, .kpis, .charts, .detail-grid, .split { grid-template-columns: 1fr; }
+      .topnav { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    <span><strong>Static demo</strong> with fictional sales data. UI mirrors the production Sales Agent Tracker.</span>
+    <a href="../../index.html#work">← Back to portfolio</a>
+  </div>
+
+  <header class="topnav">
+    <a class="brand" href="#">
+      <span class="brand-mark">ST</span>
+      Sales Agent Tracker
+    </a>
+    <nav class="nav-tabs" aria-label="Demo views">
+      <button type="button" class="active" data-panel="dashboard">Dashboard</button>
+      <button type="button" data-panel="opportunities">Opportunities</button>
+      <button type="button" data-panel="sap">SAP Parts</button>
+      <button type="button" data-panel="detail">Opportunity Detail</button>
+    </nav>
+    <div class="user-chip">
+      <span class="badge">Agent</span>
+      jdoe · NorthPeak Sales
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="wrap" style="padding-top:0;padding-bottom:0">
+      <h1 id="view-title">Dashboard</h1>
+      <p>Showing data for: <strong>NorthPeak Sales</strong> · Sample territory OH / MI / IN · 2026 YTD</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="panel active" id="panel-dashboard">
+      <div class="filters">
+        <label>Agent<select disabled><option>NorthPeak Sales</option></select></label>
+        <label>State / Region<select disabled><option>All</option><option>OH</option><option>MI</option></select></label>
+        <label>Customer<select disabled><option>All customers</option></select></label>
+        <label>Year<select disabled><option>2026</option></select></label>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi opp"><div class="label">Salesforce Parts</div><div class="value">47</div></div>
+        <div class="kpi sap"><div class="label">SAP Parts</div><div class="value">128</div></div>
+        <div class="kpi comments"><div class="label">Total Comments</div><div class="value">23</div></div>
+        <div class="kpi"><div class="label">Quotes Sent</div><div class="value">18</div></div>
+      </div>
+
+      <div class="charts">
+        <div class="card">
+          <div class="card-h"><span>Parts by Stage</span><span style="color:var(--text-light);font-weight:500;font-size:12px">count</span></div>
+          <div class="card-b"><div class="chart-box"><canvas id="chart-stage"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><span>By Country</span><span style="color:var(--text-light);font-weight:500;font-size:12px">count</span></div>
+          <div class="card-b"><div class="chart-box"><canvas id="chart-country"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><span>Amount by Stage</span><span style="color:var(--text-light);font-weight:500;font-size:12px">USD</span></div>
+          <div class="card-b"><div class="chart-box"><canvas id="chart-amount"></canvas></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-opportunities">
+      <div class="card">
+        <div class="card-h"><span>Salesforce Parts / Opportunities</span><span style="color:var(--text-light);font-weight:500;font-size:12px">6 sample rows</span></div>
+        <div class="card-b" style="padding:0;overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Opportunity Ref</th>
+                <th>Project Name</th>
+                <th>Account</th>
+                <th>Amount</th>
+                <th>Stage</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#" data-goto="detail">OPP-2026-0142</a></td>
+                <td>CNC Line Upgrade – Plant 3</td>
+                <td>Apex Bearing Co</td>
+                <td class="money">$285,000</td>
+                <td><span class="stage">Proposal/Quote</span></td>
+                <td>2026-03-12</td>
+              </tr>
+              <tr>
+                <td><a href="#" data-goto="detail">OPP-2026-0098</a></td>
+                <td>Grinding Cell Retrofit</td>
+                <td>Midwest Precision LLC</td>
+                <td class="money">$142,500</td>
+                <td><span class="stage negotiation">Negotiation</span></td>
+                <td>2026-01-22</td>
+              </tr>
+              <tr>
+                <td>OPP-2026-0211</td>
+                <td>Aftermarket Spindle Kit</td>
+                <td>Harbor Gear Works</td>
+                <td class="money">$48,900</td>
+                <td><span class="stage">Qualification</span></td>
+                <td>2026-05-03</td>
+              </tr>
+              <tr>
+                <td>OPP-2025-0884</td>
+                <td>LT2e Demo Conversion</td>
+                <td>Summit Auto Components</td>
+                <td class="money">$410,000</td>
+                <td><span class="stage won">Closed Won</span></td>
+                <td>2025-11-18</td>
+              </tr>
+              <tr>
+                <td>OPP-2026-0044</td>
+                <td>Metrology Fixture Package</td>
+                <td>Lakeview Machine Tools</td>
+                <td class="money">$67,250</td>
+                <td><span class="stage">Prospecting</span></td>
+                <td>2026-02-08</td>
+              </tr>
+              <tr>
+                <td>OPP-2025-0712</td>
+                <td>Plant 2 Capacity Expansion</td>
+                <td>Apex Bearing Co</td>
+                <td class="money">$520,000</td>
+                <td><span class="stage lost">Closed Lost</span></td>
+                <td>2025-09-02</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-sap">
+      <div class="card">
+        <div class="card-h"><span>SAP Parts</span><span style="color:var(--text-light);font-weight:500;font-size:12px">5 sample rows</span></div>
+        <div class="card-b" style="padding:0;overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Sales Doc</th>
+                <th>Customer</th>
+                <th>Material</th>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Net Value</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4500123489</td>
+                <td>Apex Bearing Co</td>
+                <td>GRD-440C-12</td>
+                <td>Cylindrical grinding spindle assembly 440C</td>
+                <td>2</td>
+                <td class="money">$48,750</td>
+                <td>2026-02-14</td>
+              </tr>
+              <tr>
+                <td>4500124011</td>
+                <td>Midwest Precision LLC</td>
+                <td>WHEEL-A80-V</td>
+                <td>Abrasive wheel pack A80 vit bond</td>
+                <td>12</td>
+                <td class="money">$6,480</td>
+                <td>2026-03-01</td>
+              </tr>
+              <tr>
+                <td>4500124550</td>
+                <td>Harbor Gear Works</td>
+                <td>CTRL-PLC-7</td>
+                <td>PLC retrofit kit series 7</td>
+                <td>1</td>
+                <td class="money">$19,200</td>
+                <td>2026-03-18</td>
+              </tr>
+              <tr>
+                <td>4500125102</td>
+                <td>Summit Auto Components</td>
+                <td>FIXT-TX-220</td>
+                <td>Workholding fixture TX-220</td>
+                <td>3</td>
+                <td class="money">$11,940</td>
+                <td>2026-04-09</td>
+              </tr>
+              <tr>
+                <td>4500125888</td>
+                <td>Lakeview Machine Tools</td>
+                <td>PROBE-REN-5</td>
+                <td>In-process probe kit REN-5</td>
+                <td>4</td>
+                <td class="money">$8,600</td>
+                <td>2026-05-21</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-detail">
+      <div class="split">
+        <div class="card">
+          <div class="card-h"><span>OPP-2026-0142</span><span class="stage">Proposal/Quote</span></div>
+          <div class="card-b">
+            <div class="detail-grid">
+              <div class="field"><div class="k">Project</div><div class="v">CNC Line Upgrade – Plant 3</div></div>
+              <div class="field"><div class="k">Account</div><div class="v">Apex Bearing Co</div></div>
+              <div class="field"><div class="k">Amount</div><div class="v">$285,000 USD</div></div>
+              <div class="field"><div class="k">Probability</div><div class="v">45%</div></div>
+              <div class="field"><div class="k">Job Type</div><div class="v">Capital Equipment</div></div>
+              <div class="field"><div class="k">Owner</div><div class="v">Alex Rivera</div></div>
+              <div class="field"><div class="k">Location</div><div class="v">Toledo, OH · United States</div></div>
+              <div class="field"><div class="k">Quote Sent</div><div class="v">2026-04-02</div></div>
+              <div class="field"><div class="k">Expected Order</div><div class="v">2026-08-15</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><span>Comments</span><span style="color:var(--text-light);font-weight:500;font-size:12px">2</span></div>
+          <div class="card-b comments">
+            <div class="comment">
+              <div class="meta"><strong>jdoe</strong> · 2026-04-10 14:22</div>
+              Customer reviewing quote with plant ops. Follow up Friday.
+            </div>
+            <div class="comment">
+              <div class="meta"><strong>arivera</strong> · 2026-04-12 09:05</div>
+              Added spindle option B to the quote matrix. Waiting on facilities power confirmation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const titles = {
+      dashboard: "Dashboard",
+      opportunities: "Opportunities",
+      sap: "SAP Parts",
+      detail: "Opportunity Detail",
+    };
+
+    const buttons = document.querySelectorAll(".nav-tabs button");
+    const panels = document.querySelectorAll(".panel");
+    const titleEl = document.getElementById("view-title");
+
+    function showPanel(id) {
+      panels.forEach((p) => p.classList.toggle("active", p.id === "panel-" + id));
+      buttons.forEach((b) => b.classList.toggle("active", b.dataset.panel === id));
+      titleEl.textContent = titles[id] || id;
+    }
+
+    buttons.forEach((btn) => btn.addEventListener("click", () => showPanel(btn.dataset.panel)));
+    document.querySelectorAll("[data-goto]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        showPanel(el.getAttribute("data-goto"));
+      });
+    });
+
+    const stages = ["Prospecting", "Qualification", "Proposal/Quote", "Negotiation", "Closed Won", "Closed Lost"];
+    new Chart(document.getElementById("chart-stage"), {
+      type: "doughnut",
+      data: {
+        labels: stages,
+        datasets: [{
+          data: [8, 12, 15, 6, 4, 2],
+          backgroundColor: ["#94a3b8", "#38bdf8", "#0a66c2", "#f59e0b", "#10b981", "#ef4444"],
+          borderWidth: 0,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: "bottom", labels: { boxWidth: 10, boxHeight: 10, padding: 10 } } },
+      },
+    });
+
+    new Chart(document.getElementById("chart-country"), {
+      type: "bar",
+      data: {
+        labels: ["United States", "Canada", "Mexico"],
+        datasets: [{
+          label: "Opportunities",
+          data: [38, 6, 3],
+          backgroundColor: "#0a66c2",
+          borderRadius: 3,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false } },
+          y: { beginAtZero: true, ticks: { precision: 0 } },
+        },
+      },
+    });
+
+    new Chart(document.getElementById("chart-amount"), {
+      type: "bar",
+      data: {
+        labels: ["Prospect", "Qualify", "Quote", "Negotiate", "Won", "Lost"],
+        datasets: [{
+          label: "Amount",
+          data: [120000, 340000, 890000, 210000, 450000, 0],
+          backgroundColor: "#10b981",
+          borderRadius: 3,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => "$" + ctx.parsed.y.toLocaleString(),
+            },
+          },
+        },
+        scales: {
+          x: { grid: { display: false } },
+          y: {
+            beginAtZero: true,
+            ticks: { callback: (v) => "$" + (v / 1000) + "k" },
+          },
+        },
+      },
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+{
+  "header": {
+    "report_period": "Sample dataset \u00b7 demo only",
+    "site": "Demo Manufacturing Co",
+    "total_responses": 20,
+    "named": 7,
+    "anonymous": 13,
+    "is_sample_data": true
+  },
+  "responses_by_year": [
+    {
+      "key": "2022",
+      "year": 2022,
+      "count": 3
+    },
+    {
+      "key": "2023",
+      "year": 2023,
+      "count": 2
+    },
+    {
+      "key": "2024",
+      "year": 2024,
+      "count": 4
+    },
+    {
+      "key": "2025",
+      "year": 2025,
+      "count": 8
+    },
+    {
+      "key": "2026",
+      "year": 2026,
+      "count": 3
+    }
+  ],
+  "reasons": [
+    {
+      "key": "compensation",
+      "label": "Compensation",
+      "count": 7
+    },
+    {
+      "key": "career_advancement",
+      "label": "Career advancement",
+      "count": 6
+    },
+    {
+      "key": "family_circumstances",
+      "label": "Family circumstances",
+      "count": 3
+    },
+    {
+      "key": "quality_of_supervision",
+      "label": "Quality of supervision",
+      "count": 4
+    },
+    {
+      "key": "company_culture",
+      "label": "Company culture",
+      "count": 1
+    },
+    {
+      "key": "company_direction",
+      "label": "Company direction",
+      "count": 2
+    },
+    {
+      "key": "type_of_work",
+      "label": "Type of work",
+      "count": 1
+    },
+    {
+      "key": "hours_or_travel",
+      "label": "Hours or travel",
+      "count": 1
+    },
+    {
+      "key": "recruited_by_new_employer",
+      "label": "Recruited by new employer",
+      "count": 2
+    },
+    {
+      "key": "other",
+      "label": "Other",
+      "count": 1
+    }
+  ],
+  "supervisor": [
+    {
+      "key": "sup_fair",
+      "question": "Demonstrated fair and equal treatment",
+      "positive": 15,
+      "neutral": 4,
+      "negative": 1,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_feedback",
+      "question": "Provided positive feedback and recognition",
+      "positive": 9,
+      "neutral": 8,
+      "negative": 3,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_recognize",
+      "question": "Recognized accomplishments",
+      "positive": 8,
+      "neutral": 6,
+      "negative": 6,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_teamwork",
+      "question": "Developed cooperation and teamwork",
+      "positive": 11,
+      "neutral": 7,
+      "negative": 2,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_resolve",
+      "question": "Resolved complaints and problems",
+      "positive": 9,
+      "neutral": 9,
+      "negative": 2,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_policies",
+      "question": "Consistently followed policies",
+      "positive": 13,
+      "neutral": 7,
+      "negative": 0,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_instructions",
+      "question": "Gave clear instructions",
+      "positive": 10,
+      "neutral": 8,
+      "negative": 2,
+      "n": 20,
+      "yes_no_scale": false
+    },
+    {
+      "key": "sup_knowledge",
+      "question": "Had clear knowledge and understanding",
+      "positive": 15,
+      "neutral": 4,
+      "negative": 1,
+      "n": 20,
+      "yes_no_scale": true
+    }
+  ],
+  "coop_comm": [
+    {
+      "key": "rate_coop_within",
+      "question": "Cooperation within department",
+      "avg": 4.0,
+      "n": 20,
+      "tone": "success"
+    },
+    {
+      "key": "rate_coop_between",
+      "question": "Cooperation between departments",
+      "avg": 3.65,
+      "n": 20,
+      "tone": "success"
+    },
+    {
+      "key": "rate_comm_within",
+      "question": "Communication within department",
+      "avg": 3.58,
+      "n": 19,
+      "tone": "success"
+    },
+    {
+      "key": "rate_comm_company",
+      "question": "Communication within the company",
+      "avg": 3.05,
+      "n": 20,
+      "tone": "warning"
+    },
+    {
+      "key": "rate_comm_supervisor",
+      "question": "Communication with supervisor",
+      "avg": 3.55,
+      "n": 20,
+      "tone": "success"
+    }
+  ],
+  "training": [
+    {
+      "key": "rate_training_1",
+      "question": "Training received",
+      "avg": 2.85,
+      "n": 20,
+      "tone": "danger"
+    },
+    {
+      "key": "rate_training_2",
+      "question": "Adequacy of training for position",
+      "avg": 2.8,
+      "n": 20,
+      "tone": "danger"
+    }
+  ],
+  "morale": {
+    "key": "rate_morale",
+    "question": "Morale within the department",
+    "avg": 3.21,
+    "n": 19,
+    "tone": "warning"
+  },
+  "workload": [
+    {
+      "key": "varied_but_good",
+      "label": "Varied but good",
+      "count": 16
+    },
+    {
+      "key": "average",
+      "label": "Average",
+      "count": 2
+    },
+    {
+      "key": "great",
+      "label": "Great",
+      "count": 2
+    }
+  ],
+  "compensation": [
+    {
+      "key": "rate_job_sat",
+      "question": "Overall job satisfaction",
+      "avg": 3.75,
+      "n": 20,
+      "tone": "success"
+    },
+    {
+      "key": "rate_salary",
+      "question": "Base salary",
+      "avg": 3.2,
+      "n": 20,
+      "tone": "warning"
+    },
+    {
+      "key": "rate_benefits",
+      "question": "Company benefits",
+      "avg": 3.45,
+      "n": 20,
+      "tone": "warning"
+    },
+    {
+      "key": "rate_pto",
+      "question": "Paid Time Off",
+      "avg": 3.25,
+      "n": 20,
+      "tone": "warning"
+    },
+    {
+      "key": "rate_holidays",
+      "question": "Paid Holidays",
+      "avg": 4.25,
+      "n": 20,
+      "tone": "success"
+    }
+  ],
+  "conditions": {
+    "key": "rate_conditions",
+    "question": "Physical working conditions",
+    "avg": 4.11,
+    "n": 19,
+    "tone": "success"
+  },
+  "recommend": [
+    {
+      "key": "yes",
+      "label": "Yes",
+      "count": 9
+    },
+    {
+      "key": "yes_with_caveat",
+      "label": "Yes with caveat",
+      "count": 3
+    },
+    {
+      "key": "depends_on_role_or_person",
+      "label": "Depends on role or person",
+      "count": 5
+    },
+    {
+      "key": "company_yes_department_no",
+      "label": "Company yes / department no",
+      "count": 1
+    },
+    {
+      "key": "no",
+      "label": "No",
+      "count": 2
+    }
+  ],
+  "voice": {
+    "liked_most": [
+      "Varied workload, the respect I received from co-workers/supervisor.",
+      "Varied ability to get involved in the business.  Ability to have input into North America policies and procedures.  Understand different Fives entities.",
+      "I enjoyed the work the that I was doing and the skills that I was applying and learning.",
+      "I loved the position I applied for and had up to my first departure in May 2022.  My return position I did not like but not because it was AP but because my time was spent answering emails from Vendors for non payment that was outside of my control.  Also spent fixing a lot of errors that other's had made.",
+      "There are some really good people in the organization.",
+      "I enjoyed my coworkers and the kind of intricate technical work that we do.",
+      "Flexibility",
+      "Enjoyed the variety & depth of engineering involved with designing our machines.",
+      "I really enjoyed being able to bring a positive outlook to the safety culture here in the building. I felt people were very receptive to having a full time safety person that they knew would be able to make improvments to things by using a safety mindset. Sometimes you have a \"maintenance\" issue but really when you look at it, it truly is a \"safety\" issue. And once we say we have a \"safety\" issue, we can move more quickly on corrective actions.",
+      "I liked the work I did when I knew what I was doing. The effort HR put into trying to improve morale was great! The people in general are super to work with.",
+      "Actual work was very interesting because he liked the technology.",
+      "my direct reports and I have a great working relationship. There are a few co-workers I will miss.",
+      "Climate control facility.  It wasn't a strenuous position to be in and it's a good learning experience to get started in your career.",
+      "I enjoyed the combination of in-depth work at my desk and also being able to spend time on the floor.\nAlso, working with all departments.",
+      "Varity of the work, the people.",
+      "Simply enjoyed doing the job, and it aligned with her daily objectives.",
+      "We are given a large amount of independence while working, the job itself is interesting.",
+      "The diversity of the work that was given.",
+      "All those around me were friendly and generous with their time. Any corrections were always constructive and given with kindness."
+    ],
+    "liked_least": [
+      "Fives directives, it feels like they are pushing more and more for them to take over the IT department then working together.",
+      "Lack of direction and support from Fives Corporate.",
+      "Refer to the above",
+      "Everything is a rush.  Tough to determine the priority of all the different issues.  You could get in trouble for asking questions if you don't know something.  Micro managing is common.  People here 30 years don't want to make a decision.  They are afraid it might be the wrong one.  Seems like a handful of people make all the decisions.",
+      "Planning and managing projects by myself.",
+      "Lead time for proposals.",
+      "Stretched too thin and was unable to really work with the employees to develop and nature their skills within the department.  Thus, not allowing him to truly manage the people but rather hew as managing to scale the projects.",
+      "We handle and deal with a vast array of chemicals. I was able to get some exposure monitoring completed to start mitigating some of those exposure hazards, But I feel there is still a lot of opportunities for improvements in that space. As I stated during my interview process, the chemical background I had was not as robust as I would have like it to be and proved challenging for me.",
+      "The constant feeling of inadequacy due to lake of training. This led to wondering if I was going to be let go at any moment, or that the management was keeping a record of failure to justify discharge of employment. At minimum, the record would allow them to never compensate monetarily any more than absolutely necessary.",
+      "Not applicable",
+      "The position could be very stressful. I was considered on call 24/7 and talked to if I didn't answer a call or missed a call. It would have been good to get praise for a job well done.",
+      "Lack of training.",
+      "The overall environment of the plant floor and the age of our production equipment.",
+      "Night shift.",
+      "Scanning.",
+      "Compensation does not match expectations.",
+      "Working with old machines.",
+      "Having to constantly be looking work within the department."
+    ],
+    "themes": [
+      {
+        "theme": "Pay below regional market",
+        "mentions": 8,
+        "sentiment": "negative",
+        "quote": "The main reason why I decided to move on was compensation."
+      },
+      {
+        "theme": "Limited career growth / advancement",
+        "mentions": 6,
+        "sentiment": "negative",
+        "quote": "Career Advancement Opportunity."
+      },
+      {
+        "theme": "Training was inadequate ('sink or swim')",
+        "mentions": 5,
+        "sentiment": "negative",
+        "quote": "I got very little. Sink or swim. Training today is better than when I started."
+      },
+      {
+        "theme": "Company direction / Corporate corporate friction",
+        "mentions": 3,
+        "sentiment": "negative",
+        "quote": "Lack of direction and support from the company Corporate."
+      },
+      {
+        "theme": "Good coworkers and people",
+        "mentions": 7,
+        "sentiment": "positive",
+        "quote": "Great people, pay, and benefits."
+      },
+      {
+        "theme": "Varied and engaging work",
+        "mentions": 5,
+        "sentiment": "positive",
+        "quote": "Enjoyed the variety and depth of engineering work."
+      },
+      {
+        "theme": "Communication gaps between departments and with senior leadership",
+        "mentions": 4,
+        "sentiment": "mixed",
+        "quote": "Communication should be an open forum, not scheduled or forced."
+      },
+      {
+        "theme": "Facility cleanliness and air quality",
+        "mentions": 2,
+        "sentiment": "negative",
+        "quote": "I was dissatisfied by the air quality and the way the company handled coolant mist."
+      }
+    ]
+  },
+  "actions": [
+    {
+      "priority": "P1",
+      "tone": "danger",
+      "title": "Address adequacy of training for position - rated 2.80 / 5",
+      "body": "This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle."
+    },
+    {
+      "priority": "P2",
+      "tone": "warning",
+      "title": "Address training received - rated 2.85 / 5",
+      "body": "This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle."
+    },
+    {
+      "priority": "P3",
+      "tone": "info",
+      "title": "Address communication within the company - rated 3.05 / 5",
+      "body": "This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle."
+    }
+  ],
+  "hero": {
+    "total_responses": 20,
+    "latest_year": 2026,
+    "latest_year_count": 3,
+    "yes_hard_pct": 45,
+    "yes_any_pct": 60,
+    "yes_hard_tone": "warning",
+    "job_sat_avg": 3.75,
+    "job_sat_tone": "success",
+    "supervisor_positive_pct": 56,
+    "supervisor_positive_tone": "warning",
+    "has_responses": false
+  }
+}

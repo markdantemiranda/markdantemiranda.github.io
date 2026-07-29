@@ -518,14 +518,25 @@ p {
   font-size: 0.98rem;
 }
 
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.15rem;
+  margin-top: 0.85rem;
+}
+
 .project-link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  margin-top: 0.85rem;
   font-size: 0.9rem;
   font-weight: 500;
   color: #f0a8d4;
+}
+
+.project-link-demo {
+  color: var(--gold);
 }
 
 .project-link:hover svg {

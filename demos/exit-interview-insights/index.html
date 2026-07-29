@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Exit Interview Insights · Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    .demo-banner {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      padding: 0.7rem 1.25rem;
+      background: rgba(175, 0, 124, 0.18);
+      border-bottom: 1px solid rgba(175, 0, 124, 0.35);
+      color: var(--text-secondary);
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+    }
+    .demo-banner strong { color: var(--text-primary); }
+    .demo-banner a { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    <span><strong>Static demo</strong> with sample data. Charts and KPIs mirror the production Exit Interview Insights app.</span>
+    <a href="../../index.html#work">← Back to portfolio</a>
+  </div>
+  <main class="page">
+    <header class="page-header">
+      <h1>Exit Interview Insights · Demo Manufacturing Co</h1>
+      <p class="meta">
+        <span>Sample dataset · demo only</span>
+        <span class="dot">·</span>
+        <span>20 responses</span>
+        <span class="dot">·</span>
+        <span>7 named / 13 anonymous</span>
+      </p>
+      <p class="meta meta-tertiary">Sample data shown.</p>
+    </header>
+
+    <section class="stat-grid stat-grid-4">
+      <div class="stat">
+        <div class="stat-value">20</div>
+        <div class="stat-label">Total responses</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value tone-warning">45%</div>
+        <div class="stat-label">Would recommend <span class="stat-sub">(60% including "yes with caveat")</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-value tone-success">3.75 / 5</div>
+        <div class="stat-label">Overall job satisfaction</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value tone-warning">56%</div>
+        <div class="stat-label">Supervisor questions rated positive</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Responses over time</h2>
+        <span class="pill pill-info">3 in 2026</span>
+      </div>
+      <article class="card">
+        <header class="card-header"><span>Completed exit interviews by year</span><span class="card-trailing">count</span></header>
+        <div class="card-body"><div class="chart-wrap"><canvas id="chart-year"></canvas></div></div>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Why people left</h2>
+        <span class="card-trailing">multi-select · a response can name several reasons</span>
+      </div>
+      <article class="card">
+        <header class="card-header"><span>Reasons mentioned</span><span class="card-trailing">mentions</span></header>
+        <div class="card-body"><div class="chart-wrap chart-wrap-md"><canvas id="chart-reasons"></canvas></div></div>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Supervisor &amp; manager</h2>
+        <span class="card-trailing">Almost always / Sometimes / Never</span>
+      </div>
+      <article class="card">
+        <header class="card-header"><span>Responses per question · stacked</span><span class="card-trailing">% of respondents</span></header>
+        <div class="card-body">
+          <div class="chart-wrap chart-wrap-lg"><canvas id="chart-supervisor"></canvas></div>
+          <p class="caption">Bars sum to 100% of respondents who answered.</p>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Cooperation, communication &amp; training</h2></div>
+      <div class="grid grid-2-1">
+        <article class="card">
+          <header class="card-header"><span>Cooperation &amp; communication</span><span class="card-trailing">avg score (1 – 5)</span></header>
+          <div class="card-body">
+            <div class="chart-wrap chart-wrap-md"><canvas id="chart-coop"></canvas></div>
+            <p class="caption">Green ≥ 3.5 · amber 3.0–3.5 · red &lt; 3.0.</p>
+          </div>
+        </article>
+        <article class="card">
+          <header class="card-header"><span>Training</span><span class="card-trailing">avg score (1 – 5)</span></header>
+          <div class="card-body"><div class="chart-wrap chart-wrap-md"><canvas id="chart-training"></canvas></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Compensation, morale &amp; workload</h2></div>
+      <div class="grid grid-2-1">
+        <article class="card">
+          <header class="card-header"><span>Compensation, benefits &amp; job satisfaction</span><span class="card-trailing">avg score (1 – 5)</span></header>
+          <div class="card-body"><div class="chart-wrap chart-wrap-md"><canvas id="chart-comp"></canvas></div></div>
+        </article>
+        <article class="card">
+          <header class="card-header"><span>Morale, workload &amp; working conditions</span><span class="card-trailing">summary</span></header>
+          <div class="card-body">
+            <div class="mini-metric-row">
+              <div class="stat">
+                <div class="stat-value tone-warning">3.21 / 5</div>
+                <div class="stat-label">Morale (19 responses)</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value tone-success">4.11 / 5</div>
+                <div class="stat-label">Working conditions (19 responses)</div>
+              </div>
+            </div>
+            <hr class="divider" />
+            <div class="chart-wrap chart-wrap-sm-tall"><canvas id="chart-workload"></canvas></div>
+            <p class="caption">Workload distribution.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head"><h2>Would you recommend the company?</h2></div>
+      <article class="card">
+        <header class="card-header"><span>Response distribution</span><span class="card-trailing">count of responses</span></header>
+        <div class="card-body">
+          <div class="recommend-row">
+            <div class="stat stat-large">
+              <div class="stat-value tone-warning">45%</div>
+              <div class="stat-label">said Yes without qualification</div>
+            </div>
+            <div class="chart-wrap chart-wrap-sm"><canvas id="chart-recommend"></canvas></div>
+          </div>
+          <hr class="divider" />
+          <ul class="legend"><li><span class="swatch swatch-success"></span>Yes: 9</li><li><span class="swatch swatch-success"></span>Yes with caveat: 3</li><li><span class="swatch swatch-warning"></span>Depends on role or person: 5</li><li><span class="swatch swatch-warning"></span>Company yes / department no: 1</li><li><span class="swatch swatch-danger"></span>No: 2</li></ul>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Voice of the employee</h2>
+        <span class="card-trailing">curated themes with a representative quote</span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Theme</th><th class="num">Mentions</th><th>Sentiment</th><th>Representative quote</th></tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td>Pay below regional market</td>
+                <td class="num">8</td>
+                <td><span class="pill pill-danger">negative</span></td>
+                <td class="quote">&ldquo;The main reason why I decided to move on was compensation.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Limited career growth / advancement</td>
+                <td class="num">6</td>
+                <td><span class="pill pill-danger">negative</span></td>
+                <td class="quote">&ldquo;Career Advancement Opportunity.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Training was inadequate (&#x27;sink or swim&#x27;)</td>
+                <td class="num">5</td>
+                <td><span class="pill pill-danger">negative</span></td>
+                <td class="quote">&ldquo;I got very little. Sink or swim. Training today is better than when I started.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Company direction / Corporate corporate friction</td>
+                <td class="num">3</td>
+                <td><span class="pill pill-danger">negative</span></td>
+                <td class="quote">&ldquo;Lack of direction and support from the company Corporate.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Good coworkers and people</td>
+                <td class="num">7</td>
+                <td><span class="pill pill-success">positive</span></td>
+                <td class="quote">&ldquo;Great people, pay, and benefits.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Varied and engaging work</td>
+                <td class="num">5</td>
+                <td><span class="pill pill-success">positive</span></td>
+                <td class="quote">&ldquo;Enjoyed the variety and depth of engineering work.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Communication gaps between departments and with senior leadership</td>
+                <td class="num">4</td>
+                <td><span class="pill pill-warning">mixed</span></td>
+                <td class="quote">&ldquo;Communication should be an open forum, not scheduled or forced.&rdquo;</td>
+              </tr>
+              <tr>
+                <td>Facility cleanliness and air quality</td>
+                <td class="num">2</td>
+                <td><span class="pill pill-danger">negative</span></td>
+                <td class="quote">&ldquo;I was dissatisfied by the air quality and the way the company handled coolant mist.&rdquo;</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Recommended actions</h2>
+        <span class="card-trailing">derived from the lowest-scoring dimensions</span>
+      </div>
+      <div class="callout-stack">
+          <article class="callout callout-danger">
+            <header class="callout-title">P1 · Address adequacy of training for position - rated 2.80 / 5</header>
+            <p>This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle.</p>
+          </article>
+          <article class="callout callout-warning">
+            <header class="callout-title">P2 · Address training received - rated 2.85 / 5</header>
+            <p>This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle.</p>
+          </article>
+          <article class="callout callout-info">
+            <header class="callout-title">P3 · Address communication within the company - rated 3.05 / 5</header>
+            <p>This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle.</p>
+          </article>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>Static portfolio demo of Exit Interview Insights.</span>
+      <span class="dot">·</span>
+      <a href="data.json">JSON data</a>
+      <span class="dot">·</span>
+      <a href="../../index.html#work">Portfolio</a>
+    </footer>
+  </main>
+
+  <script id="dashboard-data" type="application/json">{"header": {"report_period": "Sample dataset \u00b7 demo only", "site": "Demo Manufacturing Co", "total_responses": 20, "named": 7, "anonymous": 13, "is_sample_data": true}, "responses_by_year": [{"key": "2022", "year": 2022, "count": 3}, {"key": "2023", "year": 2023, "count": 2}, {"key": "2024", "year": 2024, "count": 4}, {"key": "2025", "year": 2025, "count": 8}, {"key": "2026", "year": 2026, "count": 3}], "reasons": [{"key": "compensation", "label": "Compensation", "count": 7}, {"key": "career_advancement", "label": "Career advancement", "count": 6}, {"key": "family_circumstances", "label": "Family circumstances", "count": 3}, {"key": "quality_of_supervision", "label": "Quality of supervision", "count": 4}, {"key": "company_culture", "label": "Company culture", "count": 1}, {"key": "company_direction", "label": "Company direction", "count": 2}, {"key": "type_of_work", "label": "Type of work", "count": 1}, {"key": "hours_or_travel", "label": "Hours or travel", "count": 1}, {"key": "recruited_by_new_employer", "label": "Recruited by new employer", "count": 2}, {"key": "other", "label": "Other", "count": 1}], "supervisor": [{"key": "sup_fair", "question": "Demonstrated fair and equal treatment", "positive": 15, "neutral": 4, "negative": 1, "n": 20, "yes_no_scale": false}, {"key": "sup_feedback", "question": "Provided positive feedback and recognition", "positive": 9, "neutral": 8, "negative": 3, "n": 20, "yes_no_scale": false}, {"key": "sup_recognize", "question": "Recognized accomplishments", "positive": 8, "neutral": 6, "negative": 6, "n": 20, "yes_no_scale": false}, {"key": "sup_teamwork", "question": "Developed cooperation and teamwork", "positive": 11, "neutral": 7, "negative": 2, "n": 20, "yes_no_scale": false}, {"key": "sup_resolve", "question": "Resolved complaints and problems", "positive": 9, "neutral": 9, "negative": 2, "n": 20, "yes_no_scale": false}, {"key": "sup_policies", "question": "Consistently followed policies", "positive": 13, "neutral": 7, "negative": 0, "n": 20, "yes_no_scale": false}, {"key": "sup_instructions", "question": "Gave clear instructions", "positive": 10, "neutral": 8, "negative": 2, "n": 20, "yes_no_scale": false}, {"key": "sup_knowledge", "question": "Had clear knowledge and understanding", "positive": 15, "neutral": 4, "negative": 1, "n": 20, "yes_no_scale": true}], "coop_comm": [{"key": "rate_coop_within", "question": "Cooperation within department", "avg": 4.0, "n": 20, "tone": "success"}, {"key": "rate_coop_between", "question": "Cooperation between departments", "avg": 3.65, "n": 20, "tone": "success"}, {"key": "rate_comm_within", "question": "Communication within department", "avg": 3.58, "n": 19, "tone": "success"}, {"key": "rate_comm_company", "question": "Communication within the company", "avg": 3.05, "n": 20, "tone": "warning"}, {"key": "rate_comm_supervisor", "question": "Communication with supervisor", "avg": 3.55, "n": 20, "tone": "success"}], "training": [{"key": "rate_training_1", "question": "Training received", "avg": 2.85, "n": 20, "tone": "danger"}, {"key": "rate_training_2", "question": "Adequacy of training for position", "avg": 2.8, "n": 20, "tone": "danger"}], "morale": {"key": "rate_morale", "question": "Morale within the department", "avg": 3.21, "n": 19, "tone": "warning"}, "workload": [{"key": "varied_but_good", "label": "Varied but good", "count": 16}, {"key": "average", "label": "Average", "count": 2}, {"key": "great", "label": "Great", "count": 2}], "compensation": [{"key": "rate_job_sat", "question": "Overall job satisfaction", "avg": 3.75, "n": 20, "tone": "success"}, {"key": "rate_salary", "question": "Base salary", "avg": 3.2, "n": 20, "tone": "warning"}, {"key": "rate_benefits", "question": "Company benefits", "avg": 3.45, "n": 20, "tone": "warning"}, {"key": "rate_pto", "question": "Paid Time Off", "avg": 3.25, "n": 20, "tone": "warning"}, {"key": "rate_holidays", "question": "Paid Holidays", "avg": 4.25, "n": 20, "tone": "success"}], "conditions": {"key": "rate_conditions", "question": "Physical working conditions", "avg": 4.11, "n": 19, "tone": "success"}, "recommend": [{"key": "yes", "label": "Yes", "count": 9}, {"key": "yes_with_caveat", "label": "Yes with caveat", "count": 3}, {"key": "depends_on_role_or_person", "label": "Depends on role or person", "count": 5}, {"key": "company_yes_department_no", "label": "Company yes / department no", "count": 1}, {"key": "no", "label": "No", "count": 2}], "voice": {"liked_most": ["Varied workload, the respect I received from co-workers/supervisor.", "Varied ability to get involved in the business.  Ability to have input into North America policies and procedures.  Understand different Fives entities.", "I enjoyed the work the that I was doing and the skills that I was applying and learning.", "I loved the position I applied for and had up to my first departure in May 2022.  My return position I did not like but not because it was AP but because my time was spent answering emails from Vendors for non payment that was outside of my control.  Also spent fixing a lot of errors that other's had made.", "There are some really good people in the organization.", "I enjoyed my coworkers and the kind of intricate technical work that we do.", "Flexibility", "Enjoyed the variety & depth of engineering involved with designing our machines.", "I really enjoyed being able to bring a positive outlook to the safety culture here in the building. I felt people were very receptive to having a full time safety person that they knew would be able to make improvments to things by using a safety mindset. Sometimes you have a \"maintenance\" issue but really when you look at it, it truly is a \"safety\" issue. And once we say we have a \"safety\" issue, we can move more quickly on corrective actions.", "I liked the work I did when I knew what I was doing. The effort HR put into trying to improve morale was great! The people in general are super to work with.", "Actual work was very interesting because he liked the technology.", "my direct reports and I have a great working relationship. There are a few co-workers I will miss.", "Climate control facility.  It wasn't a strenuous position to be in and it's a good learning experience to get started in your career.", "I enjoyed the combination of in-depth work at my desk and also being able to spend time on the floor.\nAlso, working with all departments.", "Varity of the work, the people.", "Simply enjoyed doing the job, and it aligned with her daily objectives.", "We are given a large amount of independence while working, the job itself is interesting.", "The diversity of the work that was given.", "All those around me were friendly and generous with their time. Any corrections were always constructive and given with kindness."], "liked_least": ["Fives directives, it feels like they are pushing more and more for them to take over the IT department then working together.", "Lack of direction and support from Fives Corporate.", "Refer to the above", "Everything is a rush.  Tough to determine the priority of all the different issues.  You could get in trouble for asking questions if you don't know something.  Micro managing is common.  People here 30 years don't want to make a decision.  They are afraid it might be the wrong one.  Seems like a handful of people make all the decisions.", "Planning and managing projects by myself.", "Lead time for proposals.", "Stretched too thin and was unable to really work with the employees to develop and nature their skills within the department.  Thus, not allowing him to truly manage the people but rather hew as managing to scale the projects.", "We handle and deal with a vast array of chemicals. I was able to get some exposure monitoring completed to start mitigating some of those exposure hazards, But I feel there is still a lot of opportunities for improvements in that space. As I stated during my interview process, the chemical background I had was not as robust as I would have like it to be and proved challenging for me.", "The constant feeling of inadequacy due to lake of training. This led to wondering if I was going to be let go at any moment, or that the management was keeping a record of failure to justify discharge of employment. At minimum, the record would allow them to never compensate monetarily any more than absolutely necessary.", "Not applicable", "The position could be very stressful. I was considered on call 24/7 and talked to if I didn't answer a call or missed a call. It would have been good to get praise for a job well done.", "Lack of training.", "The overall environment of the plant floor and the age of our production equipment.", "Night shift.", "Scanning.", "Compensation does not match expectations.", "Working with old machines.", "Having to constantly be looking work within the department."], "themes": [{"theme": "Pay below regional market", "mentions": 8, "sentiment": "negative", "quote": "The main reason why I decided to move on was compensation."}, {"theme": "Limited career growth / advancement", "mentions": 6, "sentiment": "negative", "quote": "Career Advancement Opportunity."}, {"theme": "Training was inadequate ('sink or swim')", "mentions": 5, "sentiment": "negative", "quote": "I got very little. Sink or swim. Training today is better than when I started."}, {"theme": "Company direction / Corporate corporate friction", "mentions": 3, "sentiment": "negative", "quote": "Lack of direction and support from the company Corporate."}, {"theme": "Good coworkers and people", "mentions": 7, "sentiment": "positive", "quote": "Great people, pay, and benefits."}, {"theme": "Varied and engaging work", "mentions": 5, "sentiment": "positive", "quote": "Enjoyed the variety and depth of engineering work."}, {"theme": "Communication gaps between departments and with senior leadership", "mentions": 4, "sentiment": "mixed", "quote": "Communication should be an open forum, not scheduled or forced."}, {"theme": "Facility cleanliness and air quality", "mentions": 2, "sentiment": "negative", "quote": "I was dissatisfied by the air quality and the way the company handled coolant mist."}]}, "actions": [{"priority": "P1", "tone": "danger", "title": "Address adequacy of training for position - rated 2.80 / 5", "body": "This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle."}, {"priority": "P2", "tone": "warning", "title": "Address training received - rated 2.85 / 5", "body": "This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle."}, {"priority": "P3", "tone": "info", "title": "Address communication within the company - rated 3.05 / 5", "body": "This was one of the three lowest-scoring dimensions across 20 respondents in the current dataset. Consider targeted action and re-measure next cycle."}], "hero": {"total_responses": 20, "latest_year": 2026, "latest_year_count": 3, "yes_hard_pct": 45, "yes_any_pct": 60, "yes_hard_tone": "warning", "job_sat_avg": 3.75, "job_sat_tone": "success", "supervisor_positive_pct": 56, "supervisor_positive_tone": "warning", "has_responses": false}}</script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
